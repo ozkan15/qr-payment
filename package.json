@@ -1,0 +1,22 @@
+{
+  "name": "pos-demo",
+  "version": "1.0.0",
+  "description": "osy-qr",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozkan15/qr-payment.git"
+  },
+  "author": "mehmet akif ozkan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ozkan15/qr-payment/issues"
+  },
+  "homepage": "https://github.com/ozkan15/qr-payment#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
