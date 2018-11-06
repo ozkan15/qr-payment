@@ -1,3 +1,10 @@
 const express = require('express');
 
-express.use();
+const app = express();
+
+app.use('/', (req, res) => {
+  res.status(200).json({ message: 'Success' });
+});
+
+module.exports = app;
+
