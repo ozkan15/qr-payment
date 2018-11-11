@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const morgan = require('morgan');
-const qrRouter = require('./api/router/qrRouter');
+const Payment = require('./api/router/payment');
 const cors = require('cors');
 
 const app = express();
@@ -23,13 +23,7 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
-app.use('/', qrRouter);
-
-
-
-
+app.use('/', Payment);
 
 module.exports = app;
 
