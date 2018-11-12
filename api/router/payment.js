@@ -10,10 +10,7 @@ const saleController = require('../controllers/saleController');
 const router = express.Router();
 
 
-router.post('/sale', saleController.sale);
-router.post('/transaction', transactionController.transaction);
-router.get('/batch_close', batchController.batch_close);
-router.get('/batch_summary', batchController.batch_summary);
-router.use('/refund', refundController.get_refund);
+router.post('/sale', saleController.sale, batchController.batch_close, transactionController.transaction, batchController.batch_summary);
+router.post('/refund', refundController.refund, batchController.batch_close, transactionController.transaction, batchController.batch_summary);
 
 module.exports = router;

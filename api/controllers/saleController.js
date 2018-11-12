@@ -1,7 +1,7 @@
-
+const request = require('request');
 
 exports.sale = (req, res, next) => {
-
+  console.log(req.body);
   var options = { method: 'POST',
   url: 'https://sandbox-api.payosy.com/api/payment',
   headers:
@@ -17,23 +17,22 @@ exports.sale = (req, res, next) => {
      receiptMsgMerchant: 'beko Campaign Merchant',
      paymentInfoList:
       [ { paymentProcessorID: 67,
-          paymentActionList: [ { paymentType: 3, amount: 100, currencyID: 949, vatRate: 800 } ] } ],
+          paymentActionList: [ { paymentType: req.body.paymentType, amount: req.body.amount, currencyID: 949, vatRate: 800 } ] } ],
      QRdata: req.body.QRdata },
      json: true
     };
 
-  console.log(req.body.QRdata);
 
-  if(req.status == 200) {
     request(options, (error, response, body) => {
-    if(error) console.log(error);
-    console.log('statusCode:', response && response.statusCode);
-    console.log('body:', body);
-    res.status(200);
+      if(error){
+        res.status(500).json({message:"error"});
+        res.end();
+        console.log("error");
+      } else {
+        console.log('statusCode:', response && response.statusCode);
+        console.log('body:', body);
+        next();
+      }
     });
-  } else {
-    res.status(500).json({message:"error"});
-    console.log("error");
-  }
 
 };
